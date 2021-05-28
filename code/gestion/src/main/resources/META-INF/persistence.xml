@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="eni-acces">
+		<class>entite.ModeReglements</class>
+		<class>entite.Adresse</class>
+		<class>entite.Client</class>
+		<class>entite.Categorie</class>
+		<class>entite.Fournisseur</class>
+		<class>entite.Article</class>
+		<class>entite.Commande</class>
+		<class>entite.Ligne</class>
+		<properties>
+            <!-- Login et password -->
+            <property 	name="javax.persistence.jdbc.user" 		
+            			value="eni" />
+            <property 	name="javax.persistence.jdbc.password" 	
+            			value="java" />
+
+            <!-- MySQL -->
+            <property 	name="javax.persistence.jdbc.driver" 
+            			value="com.mysql.cj.jdbc.Driver" />
+
+            <!-- Adresse Serveur --> 
+            <property 	name="javax.persistence.jdbc.url" 
+            			value="jdbc:mysql://localhost:3306/commandes?serverTimezone=UTC" />
+            
+            <!-- Suppression/Creation des tables -->
+<!--
+             <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
+ -->
+   			<property name="eclipselink.logging.level" value="INFO" />
+		</properties>
+	</persistence-unit>
+	
+	<persistence-unit name="test">
+		<class>entite.ModeReglements</class>
+		<class>entite.Adresse</class>
+		<class>entite.Client</class>
+		<class>entite.Categorie</class>
+		<class>entite.Fournisseur</class>
+		<class>entite.Article</class>
+		<class>entite.Commande</class>
+		<class>entite.Ligne</class>
+		<class>test.TestJPA</class>
+		<class>controle.utilitaires.TestDate</class>
+		<class>controle.utilitaires.TestDateConverted</class>
+		<properties>
+            <!-- Utilisateur et mot de passe -->
+            <property 	name="javax.persistence.jdbc.user"
+            			value="eni" />
+            <property 	name="javax.persistence.jdbc.password"
+            			value="java" />
+
+            <!-- MySQL -->
+            <property 	name="javax.persistence.jdbc.driver"
+            			value="com.mysql.cj.jdbc.Driver" />
+
+            <!-- Adresse Serveur et Base --> 
+            <property 	name="javax.persistence.jdbc.url"
+            			value="jdbc:mysql://localhost:3306/test?serverTimezone=UTC" />
+            
+            <!-- Suppression/Creation des tables -->
+            <property 	name="eclipselink.ddl-generation"
+            			value="drop-and-create-tables"/>
+			<property 	name="eclipselink.logging.level"
+						value="INFO" />
+		</properties>
+	</persistence-unit>
+	
+</persistence>

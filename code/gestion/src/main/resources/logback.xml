@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+ 
+	<property name="LOGS_DIR" value="c:/logs" />
+ 
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<Pattern>
+				%d{dd-MM-yyyy HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n
+			</Pattern>
+		</encoder>
+	</appender>
+ 
+	<appender name="FICHIER_DEBUG"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOGS_DIR}/debug.log</file>
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<Pattern>
+				%d{dd-MM-yyyy HH:mm:ss} - %msg%n
+			</Pattern>
+		</encoder>
+ 
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- rollover daily -->
+			<fileNamePattern>${LOGS_DIR}/archive/debug.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>10MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		
+	</appender>
+ 
+	<root level="debug">
+		<appender-ref ref="STDOUT" />
+	</root>
+ 
+	<logger name="controle.connection" level="debug">
+		<appender-ref ref="FICHIER_DEBUG" />
+	</logger>
+ 
+</configuration>
